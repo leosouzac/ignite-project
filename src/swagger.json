@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "RentalX documentation",
+    "title": "RentX Documentation",
     "description": "This is an API Rent",
     "version": "1.0.0",
     "contact":{
@@ -53,26 +53,91 @@
           "200": {
             "description": "Success",
             "content": {
-            "application/Json": {
-              "schema": {
-                "type": "array",
-                "itens": {
-                  "type": "object",
-                  "properties":{
-                    "name": {
-                      "type": "string"
-                    },
-                    "description": {
-                      "type": "string"
+              "application/Json": {
+                "schema": {
+                  "type": "array",
+                  "itens": {
+                    "type": "object",
+                    "properties":{
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
                     }
                   }
                 }
               }
             }
-            }
           }
         } 
       }
+    },
+    "/categories/import":{
+      "post": {
+        "tags": ["Category"],
+        "summary": "Upload new category",
+        "description": "Upload new category",
+        "requestBody": {
+          "content": {
+            "multipart/from-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/specifications":{
+      "post":{
+        "tags": ["Specifications"],
+        "summary": "Create a specifications",
+        "description": "Create a new specifications",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema": {
+                "$ref": "#/definitions/Specification"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+        },
+        "500": {
+          "description": "Specification already exist"
+        }
+      }
     }
+  }
+  
+  },
+  "definitions": {
+    "Specification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    } 
   }
 }
