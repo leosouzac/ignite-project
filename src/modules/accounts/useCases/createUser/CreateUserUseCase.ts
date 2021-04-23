@@ -1,9 +1,9 @@
 import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../errors/AppError";
-import { ICreateUsersDTO } from "../../dtos/ICreateUsersDTO";
-import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { AppError } from "@errors/AppError";
+import { ICreateUsersDTO } from "@modules/accounts/dtos/ICreateUsersDTO";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 
 @injectable()
 class CreateUserUseCase {
@@ -16,7 +16,7 @@ class CreateUserUseCase {
     name,
     password,
     email,
-    driver_lincense,
+    driver_license,
   }: ICreateUsersDTO): Promise<void> {
     const userAlreadyExist = await this.usersRepository.findByEmail(email);
 
@@ -30,7 +30,7 @@ class CreateUserUseCase {
       name,
       password: passwordHash,
       email,
-      driver_lincense,
+      driver_license,
     });
   }
 }
