@@ -1,4 +1,4 @@
-import { Category } from "@modules/cars/entities/Category";
+import { Category } from "modules/cars/infra/typeorm/entities/Category";
 
 import {
   ICategoriesRepository,
@@ -8,7 +8,7 @@ import {
 class CategoriesRepositoryInMemory implements ICategoriesRepository {
   categories: Category[] = [];
 
-  async findByName(name: string): Promise<Category> {
+  async findByName(name: string): Promise<Category | any> {
     const category = this.categories.find((category) => category.name === name);
     return category;
   }

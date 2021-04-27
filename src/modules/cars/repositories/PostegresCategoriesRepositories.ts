@@ -1,15 +1,15 @@
-import { Category } from "../entities/Category";
+import { Category } from "../infra/typeorm/entities/Category";
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from "./ICategoriesRepository";
 
 class PostegresCategoriesRepository implements ICategoriesRepository {
-  async findByName(name: string): Promise<Category> {
+  async findByName(name: string): Promise<Category | any> {
     console.log(name);
     return null;
   }
-  async list(): Promise<Category[]> {
+  async list(): Promise<Category[] | any> {
     return null;
   }
   async create({ name, description }: ICreateCategoryDTO): Promise<void> {

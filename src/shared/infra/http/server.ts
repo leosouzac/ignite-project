@@ -4,8 +4,7 @@ import swaggerUi from "swagger-ui-express";
 
 import "../typeorm";
 
-import "@shared/container";
-
+import "shared/container";
 import { AppError } from "@errors/AppError";
 
 import swaggerFile from "../../../swagger.json";
