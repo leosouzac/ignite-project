@@ -5,7 +5,7 @@ import {
 } from "./ICategoriesRepository";
 
 class PostegresCategoriesRepository implements ICategoriesRepository {
-  async findByName(name: string): Promise<Category | any> {
+  async findByName(name: string): Promise<Category> {
     console.log(name);
     return null;
   }
