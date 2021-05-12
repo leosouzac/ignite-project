@@ -17,7 +17,7 @@ export class CreateSpecificationsCars1620647370087
             type: "uuid",
           },
           {
-            name: "specifications_is",
+            name: "specifications_id",
             type: "uuid",
           },
           {
@@ -30,21 +30,21 @@ export class CreateSpecificationsCars1620647370087
     );
 
     await queryRunner.createForeignKey(
-      "specification_cars",
+      "specifications_cars",
       new TableForeignKey({
-        name: "FKSpecificationCar",
+        name: "FKSpecificationsCar",
         referencedTableName: "specifications",
         referencedColumnNames: ["id"],
-        columnNames: ["specification_id"],
+        columnNames: ["specifications_id"],
         onDelete: "SET NULL",
         onUpdate: "SET NULL",
       })
     );
 
     await queryRunner.createForeignKey(
-      "specification_cars",
+      "specifications_cars",
       new TableForeignKey({
-        name: "FKCarSpecification",
+        name: "FKCarSpecifications",
         referencedTableName: "cars",
         referencedColumnNames: ["id"],
         columnNames: ["car_id"],
@@ -56,15 +56,15 @@ export class CreateSpecificationsCars1620647370087
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey(
-      "specification_cars",
-      "FKSpecificationCar"
+      "specifications_cars",
+      "FKSpecificationsCar"
     );
 
     await queryRunner.dropForeignKey(
-      "specification_cars",
-      "FKCarSpecification"
+      "specifications_cars",
+      "FKCarSpecifications"
     );
 
-    await queryRunner.dropTable("specification_cars");
+    await queryRunner.dropTable("specifications_cars");
   }
 }
