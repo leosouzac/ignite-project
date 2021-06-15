@@ -33,13 +33,44 @@ describe("Create Category Controller", async () => {
       password: "admin",
     });
 
-    console.log(responseToken.body);
+    const { token } = responseToken.body;
 
-    const response = await request(app).post("/categories").send({
-      name: "Category Supertest",
-      desciption: "Category Supertest",
-    });
+    const response = await request(app)
+      .post("/categories")
+      .send({
+        name: "Category Supertest",
+        desciption: "Category Supertest",
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      });
 
     expect(response.status).toBe(201);
+  });
+
+  it("should be able to list all categopries", async () => {
+    const responseToken = await request(app).post("/sessions").send({
+      email: "admin@rents.com.br",
+      password: "admin",
+    });
+
+    const { token } = responseToken.body;
+
+    await request(app)
+      .post("/categories")
+      .send({
+        name: "Category Supertest",
+        desciption: "Category Supertest",
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      });
+    const response = await request(app).get("/categories");
+
+    console.log(response.body);
+
+    expect(response.status).toBe(201);
+    expect(response.body.length).toBe(1);
+    expect(response.body[0]).toHaveProperty("id");
   });
 });
