@@ -24,6 +24,9 @@ class Rental {
   car_id: string;
 
   @Column()
+  user_id: string;
+
+  @Column()
   start_date: Date;
 
   @Column()
