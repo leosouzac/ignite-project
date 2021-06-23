@@ -73,7 +73,7 @@ class AuthenticateUserUseCase {
       user_id: user.id,
     });
 
-    const toeknReturn: IResponse = {
+    const tokenReturn: IResponse = {
       token,
       user: {
         name: user.name,
@@ -82,7 +82,7 @@ class AuthenticateUserUseCase {
       refresh_token,
     };
 
-    return toeknReturn;
+    return tokenReturn;
   }
 }
 
