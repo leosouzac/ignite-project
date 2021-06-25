@@ -16,7 +16,7 @@ class RefreshTokenUseCase {
   constructor(
     @inject("UsersToeknRepository")
     private usersTokenRepository: UsersTokenRepository,
-    @inject(" DateProvider")
+    @inject("DaysjsDateProvider")
     private dateProvider: IDateProvider
   ) {}
   async execute(token: string): Promise<string> {
