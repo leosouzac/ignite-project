@@ -6,7 +6,7 @@ export default async (host = "database"): Promise<Connection> => {
   return createConnection(
     Object.assign(defaultOptions, {
       host: "localhost",
-      database: "rentx_test",
+      database: "rentx",
     })
   );
 };
