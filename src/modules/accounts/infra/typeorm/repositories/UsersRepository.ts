@@ -5,7 +5,7 @@ import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepositor
 
 import { User } from "../entities/User";
 
-class UserRepository implements IUsersRepository {
+class UsersRepository implements IUsersRepository {
   private repository: Repository<User>;
 
   constructor() {
@@ -42,4 +42,4 @@ class UserRepository implements IUsersRepository {
   }
 }
 
-export { UserRepository };
+export { UsersRepository };

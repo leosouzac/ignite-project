@@ -3,7 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { v4 as uuidV4 } from "uuid";
 
 import { AppError } from "@errors/AppError";
-import { UserRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
+import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
 import { UsersTokenRepository } from "@modules/accounts/infra/typeorm/repositories/UsersTokenRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { IMailProvider } from "@shared/container/providers/MailProvider/IMailProvider";
@@ -12,7 +12,7 @@ import { IMailProvider } from "@shared/container/providers/MailProvider/IMailPro
 class SendForgotPasswordMailUseCase {
   constructor(
     @inject("UsersRepository")
-    private usersRepository: UserRepository,
+    private usersRepository: UsersRepository,
     @inject("UsersTokenRepository")
     private usersTokenRepository: UsersTokenRepository,
     @inject("DateProvider")

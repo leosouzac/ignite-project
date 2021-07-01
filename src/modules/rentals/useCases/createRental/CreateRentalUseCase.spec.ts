@@ -56,7 +56,7 @@ describe("Create Rental", () => {
     await expect(
       createRentalUseCase.execute({
         user_id: "1234",
-        car_id: "3214",
+        car_id: "3256",
         expected_return_date: dayAt25Hours,
       })
     ).rejects.toEqual(new AppError("There's a rental in progress for user"));
